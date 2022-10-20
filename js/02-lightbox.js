@@ -14,36 +14,37 @@ function createMarkupGallery(galleryItems) {
     ).join("");
 }
 const markupGallery = createMarkupGallery(galleryItems);
+
 galleryEl.insertAdjacentHTML("afterbegin", markupGallery)
 
-const lightbox = new SimpleLightbox('.gallery a', {captionsData: "alt", captionDelay: 250});
+new SimpleLightbox('.gallery a', {captionsData: "alt", captionDelay: 250});
 
 
-const onClick = (e) => {
-  e.preventDefault();
-  if (e.target.className === "gallery__image") {
-    const sizeChahge = basicLightbox.create(`
-    <img src=${e.target.dataset.source} width="800" height="600">
-`,
-      {
-        onShow: () => {
-          window.addEventListener("keydown", closeModal);
-        },
-        onClose: () => {
-          removeEventListener("keydown", closeModal);
-        },
+// const onClick = (e) => {
+//   e.preventDefault();
+//   if (e.target.className === "gallery__image") {
+//     const sizeChahge = basicLightbox.create(`
+//     <img src=${e.target.dataset.source} width="800" height="600">
+// `,
+//       {
+//         onShow: () => {
+//           window.addEventListener("keydown", closeModal);
+//         },
+//         onClose: () => {
+//           removeEventListener("keydown", closeModal);
+//         },
 
-    }
-    )
+//     }
+//     )
 
-    sizeChahge.show()
+//     sizeChahge.show()
     
-    function closeModal(e) {
-      if (e.code === "Escape") {
-        sizeChahge.close();
-      }
-    }
-  }
-}
+//     function closeModal(e) {
+//       if (e.code === "Escape") {
+//         sizeChahge.close();
+//       }
+//     }
+//   }
+// }
 
-galleryEl.addEventListener('click', onClick);
+// galleryEl.addEventListener('click', onClick);
